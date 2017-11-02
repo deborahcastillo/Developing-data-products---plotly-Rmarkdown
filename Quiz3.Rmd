@@ -1,0 +1,30 @@
+---
+title: "Quiz3"
+author: "Deborah Castillo"
+date: "30/10/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Vehicle accidents
+
+##Loading vehicle-accidents dataset
+```{r load, eval=FALSE, echo=TRUE}
+data <- read.csv(file = "vehicle-accidents.csv")
+str(data)
+data$State <- as.factor(data$State)
+data$MV.Number <- as.numeric(data$MV.Number)
+```
+
+##Plotting using plotly (Non Fixed Object vs. Fixed Objects)
+```{r plot, warning=FALSE, message=FALSE, echo=TRUE, eval= TRUE}
+library(plotly)
+newdata <- data[, c("State", "MV.Number")]
+p <- plot_ly(newdata, x = ~State, y = ~MV.Number)
+p
+```
+
+
